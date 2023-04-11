@@ -4,10 +4,13 @@ import com.restApiPractice.demo.etities.Courses;
 import com.restApiPractice.demo.service.CourseServiceImpl;
 import com.restApiPractice.demo.service.CourseServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class MyController {
@@ -34,11 +37,17 @@ public class MyController {
 
 
     @GetMapping("/courses")
-    public List<Courses> getCourses(){
-        return courseService.getCourses();
+    public ResponseEntity< List<Courses> > getCourses(){
+      List<Courses> coursesList = courseService.getCourses();
+      if(coursesList.size() <=0){
+          return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+      }else {
+          return ResponseEntity.of(Optional.of(coursesList));
+      }
+
     }
 
-    @GetMapping("courses/delete/{id}")
+    @DeleteMapping ("/courses/delete/{id}")
     public void deleteCourse(@PathVariable("id") int id){
         courseService.deleteById(id);
     }
