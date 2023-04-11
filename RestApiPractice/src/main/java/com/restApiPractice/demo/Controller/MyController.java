@@ -33,7 +33,7 @@ public class MyController {
     }
 
 
-        @GetMapping("/courses")
+    @GetMapping("/courses")
     public List<Courses> getCourses(){
         return courseService.getCourses();
     }
@@ -41,5 +41,10 @@ public class MyController {
     @GetMapping("courses/delete/{id}")
     public void deleteCourse(@PathVariable("id") int id){
         courseService.deleteById(id);
+    }
+
+    @PutMapping("/courses/{id}")
+    public Courses updateCourse(@PathVariable("id") int id){
+        return courseService.updateCourse(id);
     }
 }

@@ -11,4 +11,6 @@ public interface CourseServices {
 
      void deleteById(int id);
     //List<Courses> getCourseById(int id);
+
+    Courses updateCourse(int id);
 }
