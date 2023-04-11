@@ -21,11 +21,11 @@ public class MyController {
     }
 
 
-//
-//    @GetMapping ("/courses/{id}")
-//    public List<Courses> geTCourseId(@PathVariable("id") int id){
-//       return courseService.getCourseById(id);
-//    }
+
+    @GetMapping ("/courses/{id}")
+    public Courses geTCourseId(@PathVariable("id") int id){
+       return courseService.getCourseById(id);
+    }
 
     @PostMapping(path = "/courses")
     public Courses addCourses(@RequestBody Courses courses){

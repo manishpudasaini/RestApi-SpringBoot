@@ -9,6 +9,7 @@ public interface CourseServices {
 
      List<Courses> getCourses();
 
+     Courses getCourseById(int id);
      void deleteById(int id);
     //List<Courses> getCourseById(int id);
 

@@ -30,6 +30,13 @@ public class CourseServiceImpl implements CourseServices{
         return coursesList ;
     }
 
+    //get course by id
+    @Override
+    public Courses getCourseById(int id) {
+        Optional<Courses> optionalCourses = courseRepository.findById(id);
+        Courses courses=optionalCourses.get();
+        return courses;
+    }
 
 
     //put method
